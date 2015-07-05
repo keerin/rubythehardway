@@ -1,0 +1,37 @@
+puts - sends output
+print - sends output and adds a new line
+" - Used to 
+# - 
+#{} - 
++ - add
+- - subtract
+/ - divide
+* - multiply
+% - modulus (remainder from a division operation)
+< - less than
+> - greater than
+= - set variable on right equal to value on left
+== - equal to
++= - increment the variable on the left by the value on the right
+=> - equal to or greater than
+<= - less than or equal to
+false - boolean, is not true
+true - boolean, is true
+%{} - http://stackoverflow.com/questions/29268215/why-use-q-or
+\n - new line
+""" - add this at the start and end of a multi-line passage of text
+\t - add a tab to a line of text
+gets - get input from the user
+.chomp - add this to gets to remove whitespace, returns etc
+.to_i - add this to gets to tell Ruby the input is an integer
+ARGV - an array of arguments added when running the script
+$stdin - command line input
+.read - a method used to read files to the left of this
+open() - a method used to open files or directories
+.close - use this to close the file to the left of this
+.first - selects the first argument from a list
+.truncate() - removes all data from a certain position (in bytes)
+.write - will write to the file indicated to the left of this
+def - start the definition of a function
+end - end a function
+seek() - move the memory pointer to the location selected (in bytes)
