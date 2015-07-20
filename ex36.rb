@@ -1,7 +1,68 @@
-# The instructions for this exercise are here - http://learnrubythehardway.org/book/ex36.html
+def inside_house
+    puts "Creeping in the back door, you see the baby lying at the far side of the table, completely naked. There's even apples on the table! Your mouth starts to water and you have to stop yourself from drooling."
+    puts "At the near end of the table, a freshly baked ham is cooling. There is a woman standing at the cooker with a fring pan, making eggs."
+    puts "To grab the baby and make a run for it, type 'grab baby'."
+    puts "If you want to play it safe and bring the King a cooked ham instead, type 'grab ham'."
+
+    print "> "
+
+    inside_choice = $stdin.gets.chomp
+    $choices.push(inside_choice)
+
+    if inside_choice.include? "grab baby"
+        puts "Grabbing the baby from the table causes the little snot machine to scream. The woman spins round, screams and smashes you with her frying pan. You collapses to the ground, and see the remaining Kobold running out the door with the ham."
+        dead ("Darkness comes over you. The last sound you hear is the cocking of a shotgun...")
+    elsif inside_choice.include? "grab ham"
+        puts "You push the Kobold into the woman who spins round, screams and smashes him with her frying pan. He collapses to the ground.\n"
+        dead("You run as fast as your little legs can carry you with the ham, through the field, past the river, through the cave and back to King Kobold.\n The King asked you for a baby, and you brought him a ham. You think he can't tell the difference between a baby and a ham?\nAs his guards grab you, the last thing you feel is the spit being shoved up your arse. It comes out your mouth and you are laid over the fire. The King laughs all night, while eating his delicious ham.")
+    else
+        inside_house
+    end
+end
+
+def outside_house
+    puts "You made it! You are finally at the farm house. You both pick up shovels (trowels) for weapons."
+    puts "Would you like to run straight into the front door?"
+    puts "Maybe you fancy looking in the window to scope things out?"
+    puts "If you want to jump on the shoulders of the last remaining Kobold to look in the window, type 'window'"
+    puts "If you want to be a little more forthright and run straight in the front door, shovels above your head then type 'front door'"
+
+    print "> "
+
+    outside_choice = $stdin.gets.chomp
+    $choices.push(outside_choice)
+
+    if outside_choice.include? "window"
+        puts "Looking in the window you see the farmer sitting in a rocking chair, cleaning his shotgun. Phew! Luckily you didn't barge in the front door like an idiot!\nYou can also see through the window that there is a baby lying on the kitchen table! Nearly there!"
+        inside_house
+    elsif outside_choice.include? "front door"
+        dead("You kick the door open and scream YAAAAARRRRGHHHH\n Not because you are trying to be scary, but because the farmer is sitting behind the door with his shotgun and blasts you both with one shot.")
+    else
+        outside_house
+    end
+
+end
 
 def field
-    puts "This is the field."
+    puts "Crossing the field is the last obstacle to the house, and there is nothing here but the hot sun above, grass in front of you and a few cows on the way."
+    puts "The thought of sneaking under on of the cows, squeezing a teat and enjoying some milk is very tempting."
+    puts "Type 'ignore' if you can't resist the temptation and want to keep heading towards the farm house."
+    puts "If the thought of having some milk is just too tempting, type 'milk'."
+
+    print "> "
+    
+    field_choice = $stdin.gets.chomp
+    $choices.push(field_choice)
+
+    if field_choice.include? "ignore"
+        puts "You decide not to grab some milk from the cow and wander off across the field. One of the remaining Kobolds decides that he wants some instead. The cow has other plans and sits on him!"
+        outside_house
+    elsif field_choice.include? "milk"
+        dead ("You creep up on the cow and it doesn't bat an eyelid. You grab one of the teats and squeeze. You can almost taste the milk on your tongue when... SPLAT. The cow has other plans and sits on you, killing you instantly. Idiot.")
+    else
+        field
+    end
+        
 end
 
 def surface
@@ -79,7 +140,7 @@ def cave
 end
 
 def dead(why)
-    puts why, "Game Over. Your choices were: "
+    puts why, "Game Over.\n\nYour choices were:"
     $choices.each { |c| print "#{c}\n" }
     exit(0)
 end
