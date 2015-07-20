@@ -14,6 +14,7 @@ def surface
     print "> "
 
     surface_choice = $stdin.gets.chomp
+    $choices.push(surface_choice)
 
     if surface_choice.include? "river"
         dead("The other Kobolds hesitantly approach the water with you leading. As you prepare to dip your toes in, you feel a shove in your back and end up in the water! The reason Kobolds hate water is because they can't swim! Enjoy drowning.\n")
@@ -40,13 +41,13 @@ def cave_right
 
     print "> "
     cave_choice = $stdin.gets.chomp
+    $choices.push(cave_choice)
 
     if cave_choice.include? "jump"
         cave_jump
     elsif cave_choice.include? "dive"
         cave_dive
-    else 
-        cave_right
+    else cave_right
     end
 end
 
@@ -66,6 +67,7 @@ def cave
     print "> "
 
     cave_direction = $stdin.gets.chomp
+    $choices.push(cave_direction)
 
     if cave_direction.include? "left"
         cave_left
@@ -77,7 +79,8 @@ def cave
 end
 
 def dead(why)
-    puts why, "Game Over."
+    puts why, "Game Over. Your choices were: "
+    $choices.each { |c| print "#{c}\n" }
     exit(0)
 end
 
@@ -89,6 +92,7 @@ def start
 
     print "> "
     choice = $stdin.gets.chomp
+    $choices.push(choice)
 
     if choice == "yes"
         cave
@@ -97,5 +101,7 @@ def start
     else dead("If you can't simply type yes or no, this game is probably not for you...")
     end
 end
+
+$choices = Array.new
 
 start
