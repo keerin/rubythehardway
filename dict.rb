@@ -74,3 +74,25 @@ module Dict
         end
     end
 end
+
+# This code is an array of buckets, which themselves are an array of slots containing key/value pairs.
+
+# The data structure looks like this - aDict(bucket(slot(key/value)))
+
+# So in the code above, we are converting a key to an integer, using the hash function to divide the hash by the number of buckets existing currently in aDict.
+
+# This gives it a number to be used as an index (location) It does this by using the length of the key. Then we have code to try get this bucket from aDict array of buckets, then navigate THAT so we can find the slot containing the key we are looking for.
+
+# aDict.length determines the number of buckets inside aDict
+
+# get_bucket will use the hash key to find the bucket the key is in.
+
+# get_slot will cycle through every possible slot until it finds a matching key (if key == k line of code)
+
+# get will use get_slot to find a value
+
+# set will allow you to set a key/value pair. It does this by first checking to see if it exists already, and if it doesn't, then it appends the k/v. If it already exists, it will replace what is already there.
+
+# delete will look for the correct bucket then remove the k/v from it.
+
+# list just iterates over everything and prints them all out.
