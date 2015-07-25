@@ -1,0 +1,63 @@
+1. You can get stuff out of a hash by calling the hash, with the key in square brackets []:
+
+---
+puts hash_name['key']
+---
+
+2. You can get stuff out of a module by requiring the module, then calling it and the function you want to use with a .
+
+---
+require "./module_name.rb"
+
+module_name.function()
+---
+
+3. You can access variables in a similar way, but using :: instead of .
+
+---
+require "./module_name.rb"
+
+module_name::variable
+---
+
+So the key idea here is the same, you are using some code to hold things, and you can pull things out of it in a similar way, with [ ], . or ::, The tutuorial says this is takign a key=value style container, then getting something out of it by using the key's name.
+
+---
+hash['key']
+
+module.function
+
+module::variable
+---
+
+Classes work the same as modules, but there is a lot more complicated stuff going on.
+
+Modules can only be used once, whereas classes can be used many, many times. In ex40.rb, you have an "instance variable" called tangerine and a function called apple.
+
+To use a class, you have to do something similar to "require" for modules. This is called instatiate, which really just means 'create'. You would do this y calling the class's 'new' function.
+
+--
+thing = MyStuff.new()
+thing.apple()
+puts thing.tangerine
+---
+
+When you run something like the above, Ruby will craft an empty object with all the functions defined in the original class (make a copy of the empty class). @ means this object, $ means global. SO the @tangerine in the code refers to "the variable in this object called tangerine". Finally, we'll assign this object to a variable so we can use it, and call it later in the code if needed.
+
+Doing the above gives you a copy of the class to use as a blueprint for your new code. When you do a similar thign with the module, you are using that module, of which there is only one.
+
+We have elarned three ways o get things from other, bigger things.
+
+hash/dict style
+mystuff['apples']
+
+module style
+
+My_stuff.apples()
+puts Mystuff::TANGERINE
+
+class style
+
+thing = MyStuff.new()
+thing.apples()
+puts thing.tangerines
